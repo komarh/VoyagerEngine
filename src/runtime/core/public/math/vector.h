@@ -159,6 +159,7 @@ namespace VE::Math // Prevents shadowing by allowing same variable names if they
     TVector<T> TVector<T>::GetNormalized() const
     {
         T VM = this->Magnitude();
+        // We can't check for exact equality with floating point data types, that's why we use epsilon() to check for "close enough"
         if (VM <= std::numeric_limits<T>::epsilon() * SMALL_NUMBER<T>) throw std::runtime_error("Normalizing a zero vector");
         return ((*this) / VM);
     }
